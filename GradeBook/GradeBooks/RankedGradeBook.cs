@@ -44,6 +44,17 @@ namespace GradeBook.GradeBooks
             }
             
         }
+        public override void CalculateStudentStatistics(string name)
+        {
+            if (Students.Count < 5)
+            {
+                Console.WriteLine("Ranked grading requires at least 5 students.");
+            }
+            else
+            {
+                base.CalculateStudentStatistics(name);
+            }
+        }
         private double getTopInClassPercentile(double grade) 
         {
             List<double> allGrades = new List<double>();
