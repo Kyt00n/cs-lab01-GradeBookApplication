@@ -15,15 +15,12 @@ namespace GradeBook.GradeBooks
         }
         public override char GetLetterGrade(double grade)
         {
-            
-            
-            
-            if (Students.Count < 5) 
+            if (Students.Count < 5)
             {
                 throw new InvalidOperationException();
             }
 
-            
+
             char letterGrade = getTopInClassPercentile(grade) switch
             {
                 < 20 => 'A',
@@ -33,6 +30,18 @@ namespace GradeBook.GradeBooks
                 _ => 'F'
             };
             return letterGrade;
+            
+        }
+        public override void CalculateStatistics()
+        {
+            if (Students.Count < 5)
+            {
+                Console.WriteLine("Ranked grading requires at least 5 students.");
+            }
+            else
+            {
+                base.CalculateStatistics();
+            }
             
         }
         private double getTopInClassPercentile(double grade) 
